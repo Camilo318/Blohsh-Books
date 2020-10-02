@@ -1,2 +1,1 @@
-import './styles/styles.css'
-console.log('Billie Eilish')
+import './styles/app.css'
