@@ -10,7 +10,7 @@ const app = express()
 require('./database')
 
 //Settings
-app.set('port', 3000)
+app.set('port', 8000)
 
 //Middlewares
 app.use(morgan('dev'))
@@ -33,5 +33,5 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //Start server
 app.listen(app.get('port'), () => {
-    console.log('Server on port 3000')
+    console.log('Server on port 8000')
 })
