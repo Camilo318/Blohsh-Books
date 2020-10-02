@@ -8,13 +8,23 @@ module.exports = {
         filename: 'main.js',
         path: path.resolve(__dirname, 'Backend/public')
     },
-
-
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './Frontend/public/index.html',
             inject: true
         })
-    ]
+    ],
+
+    module:{
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
+    }
 }
