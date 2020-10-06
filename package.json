@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon ./Backend/index.js --ignore Frontend",
     "start": "cross-env NODE_ENV=production node ./Backend/index.js",
-    "build": "webpack --mode production",
+    "build": "webpack -p",
     "devServer": "webpack-dev-server --open"
   },
   "keywords": [],
