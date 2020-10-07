@@ -35,4 +35,5 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Start server
 app.listen(app.get('port'), () => {
     console.log('Server on port 8000')
+    console.log(__dirname)
 })
