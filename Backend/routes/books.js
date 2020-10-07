@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const router = Router()
+const fs = require('fs').promises
 
 const Book = require('../models/Book')
 
@@ -19,6 +20,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     const deletedBook = await Book.findByIdAndDelete(req.params.id)
+    fs.unlink(`../public${deletedBook.imagePath}`)
     res.json({
         deleted_book : deletedBook
     })

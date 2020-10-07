@@ -26,6 +26,7 @@ form.addEventListener('submit', (e) => {
 
 
 document.querySelector('#book-cards').addEventListener('click', e => {
+    e.preventDefault()
     if (e.target.classList.contains('delete')) {
         console.log(e.target)
         handler.deleteBook(e.target.dataset.id)
