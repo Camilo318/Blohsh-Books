@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon ./Backend/index.js --ignore Frontend",
     "start": "cross-env NODE_ENV=production node ./Backend/index.js",
-    "build": "webpack -p",
-    "devServer": "webpack-dev-server --open"
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "devServer": "cross-env NODE_ENV=development webpack-dev-server --open"
   },
   "keywords": [],
   "author": "Camilo Perilla <camiloa0318@gmail.com>",

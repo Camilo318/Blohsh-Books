@@ -28,7 +28,7 @@ class UI {
                     </div>
                     
                     <div class="col-md-8">
-                        <div class="card-block p-2">
+                        <div class="card-block p-3">
                             <h4 class="card-title font-weight-bolder">
                             ${book.title}
                             </h4>
