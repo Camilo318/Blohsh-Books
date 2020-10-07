@@ -15,45 +15,42 @@ class UI {
         booksContainer.innerHTML = ''
 
         books.forEach(book => {
-            const div = document.createElement('div')
-            div.className = ''
-            div.innerHTML = `
-                <div class="card m-2">
-                    <div class="row">
-                        <div
-                        class="col-md-4 d-flex align-items-center justify-content-center">
-                            <img
-                            class="img-fluid mx-auto d-block rounded"
-                            src="http://localhost:8000${book.imagePath}"
-                            alt="Book"/>
-                        </div>
-                        
-                        <div class="col-md-8">
-                            <div class="card-block p-2">
-                                <h4 class="card-title">
-                                ${book.title}
-                                </h4>
-                                <p class="card-text">
-                                ${book.author}
-                                </p>
-                                <p class="card-text">
-                                Review Score: ${book.review}
-                                </p>
-                                <button
-                                data-id=${book._id}
-                                class="btn btn-danger delete">
-                                Delete
-                                </button>
-                            </div>
-                        </div>
+            const card = document.createElement('div')
+            card.className = 'card mb-3'
+            card.innerHTML = `
+                <div class="row m-0">
+                    <div
+                    class="col-md-4 d-flex align-items-center py-3">
+                        <img
+                        class="img-fluid mx-auto d-block rounded"
+                        src="http://localhost:8000${book.imagePath}"
+                        alt="Book"/>
                     </div>
-                    <div class="card-footer">
-                        ${format(book.created_at)}
+                    
+                    <div class="col-md-8">
+                        <div class="card-block p-2">
+                            <h4 class="card-title font-weight-bolder">
+                            ${book.title}
+                            </h4>
+                            <p class="card-subtitle text-muted font-weight-bold">
+                            ${book.author}
+                            </p>
+                            <p class="card-text text-muted">
+                            Review Score: ${book.review}
+                            </p>
+                            <button
+                            data-id=${book._id}
+                            class="btn btn-danger delete">
+                            Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
-            
-                `
-            booksContainer.appendChild(div)
+                <div class="card-footer">
+                    ${format(book.created_at)}
+                </div>
+            `
+            booksContainer.appendChild(card)
         })
     }
 
