@@ -23,7 +23,7 @@ class UI {
                     class="col-md-4 d-flex align-items-center py-3">
                         <img
                         class="img-fluid mx-auto d-block rounded"
-                        src="http://localhost:8000${book.imagePath}"
+                        src="${book.imagePath}"
                         alt="Book"/>
                     </div>
                     
