@@ -58,10 +58,11 @@ class UI {
         await this.handler.postBook(book)
         this.clearForm()
         this.renderBooks()
+        
     }
 
     async deleteBook(id) {
-        await this.handler.deleteBook(id)
+        const book = await this.handler.deleteBook(id)
         this.renderBooks()
     }
 
@@ -69,7 +70,17 @@ class UI {
         document.querySelector('#book-form').reset()
     }
 
-    renderMessage() {
+    renderMessage(message, type, time=3000) {
+        const alert = document.createElement('div')
+        alert.innerText = message
+        alert.className = `alert alert-${type}`
+        const container = document.querySelector('.container-alert')
+        const row = document.querySelector('.row-alert')
+        container.insertBefore(alert, row)
+
+        setTimeout(() => {
+            alert.remove()
+        }, time)
 
     }
 
