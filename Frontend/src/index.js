@@ -1,7 +1,12 @@
 import './styles/app.css'
-import BookService from '../services/BookService'
+import UI from './UI'
+
+const handler = new UI()
 const form = document.querySelector('#book-form')
 
+document.addEventListener('DOMContentLoaded', () => {
+    handler.renderBooks()
+})
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -16,7 +21,13 @@ form.addEventListener('submit', (e) => {
     newBook.append('review', review)
     newBook.append('image', bookImage[0])
     
-    const bookService = new BookService()
+    handler.addNewBook(newBook)
+})
 
-    bookService.postBook(newBook)
+
+document.querySelector('#book-cards').addEventListener('click', e => {
+    if (e.target.classList.contains('delete')) {
+        console.log(e.target)
+        handler.deleteBook(e.target.dataset.id)
+    }
 })

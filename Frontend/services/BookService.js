@@ -4,9 +4,14 @@ class BookService {
     }
 
     async getBooks() {
-        const res = await fetch(this.uri)
-        const books = await res.json()
-        return books
+        try {
+            const res = await fetch(this.uri)
+            const books = await res.json()
+            return books
+        }
+        catch(error) {
+            console.log(error.message)
+        }
     }
 
     async postBook(book) {
@@ -16,8 +21,6 @@ class BookService {
                 body: book
             })
             const data = await res.json()
-            console.log(data)
-            return data
         }
         catch(err) {
             console.log(err.message)
