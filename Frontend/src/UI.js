@@ -20,9 +20,10 @@ class UI {
             div.innerHTML = `
                 <div class="card m-2">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div
+                        class="col-md-4 d-flex align-items-center justify-content-center">
                             <img
-                            class="img-fluid"
+                            class="img-fluid mx-auto d-block rounded"
                             src="http://localhost:8000${book.imagePath}"
                             alt="Book"/>
                         </div>

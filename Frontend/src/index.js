@@ -1,11 +1,13 @@
 import './styles/app.css'
 import UI from './UI'
+import bsCustomFileInput from 'bs-custom-file-input'
 
 const handler = new UI()
 const form = document.querySelector('#book-form')
 
 document.addEventListener('DOMContentLoaded', () => {
     handler.renderBooks()
+    bsCustomFileInput.init()
 })
 
 form.addEventListener('submit', (e) => {
