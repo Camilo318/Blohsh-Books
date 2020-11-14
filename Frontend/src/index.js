@@ -24,7 +24,7 @@ form.addEventListener('submit', (e) => {
     newBook.append('image', bookImage[0])
     
     handler.addNewBook(newBook)
-    console.log(newBook)
+    console.log(bookImage[0])
     handler.renderMessage(`Book was added`, 'success')
 })
 
@@ -32,7 +32,6 @@ form.addEventListener('submit', (e) => {
 document.querySelector('#book-cards').addEventListener('click', e => {
     e.preventDefault()
     if (e.target.classList.contains('delete')) {
-        console.log(e.target)
         handler.deleteBook(e.target.dataset.id)
         handler.renderMessage(`Book was deleted`, 'danger')
     }

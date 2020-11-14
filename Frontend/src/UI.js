@@ -9,8 +9,7 @@ class UI {
 
     async renderBooks() {
         const books = await this.handler.getBooks()
-        console.log(books)
-
+        
         const booksContainer = document.querySelector('#book-cards')
         booksContainer.innerHTML = ''
 

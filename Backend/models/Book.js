@@ -5,6 +5,7 @@ const BookSchema = new Schema({
     author: {type: String, required: true},
     review: {type: Number, required: true},
     imagePath: {type: String, required: false},
+    publicID: {type: String, required: false},
     created_at: {type: Date, default: Date.now}
 })
 

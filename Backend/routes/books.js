@@ -2,6 +2,7 @@ const { Router } = require('express')
 const router = Router()
 const fs = require('fs').promises
 const path = require('path')
+const cloudinary = require('cloudinary').v2
 
 const Book = require('../models/Book')
 
@@ -12,22 +13,39 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const {title, author, review } = req.body
-    const imagePath = '/uploads/' + req.file.filename
-    const newBook = new Book({title, author, review, imagePath})
-    console.log(newBook)
-    await newBook.save()
-    res.json({message: 'Book Saved'})
+
+    try {
+        const result = await cloudinary.uploader.upload(req.file.path)
+        const imagePath = result.secure_url 
+        const publicID = result.public_id
+        const newBook = new Book({
+            title,
+            author,
+            review,
+            imagePath,
+            publicID
+        })
+        await newBook.save()
+        await fs.unlink(req.file.path)
+        res.json({message: 'Book Saved'})
+    } 
+    catch (error) {
+        console.log(error)
+    }
+    
 })
 
 router.delete('/:id', async (req, res) => {
-    const deletedBook = await Book.findByIdAndDelete(req.params.id)
-    
-    fs.unlink(path.resolve('./Backend/public'+deletedBook.imagePath))
-    .then(() => console.log('Image Deleted'))
-
-    res.json({
-        deleted_book : deletedBook
-    })
+    try {
+        const deletedBook = await Book.findByIdAndDelete(req.params.id)
+        await cloudinary.uploader.destroy(deletedBook.publicID)
+        res.json({
+            deleted_book : deletedBook
+        })    
+    } 
+    catch (error) {
+        console.log(error)
+    }
 })
 
 module.exports = router
