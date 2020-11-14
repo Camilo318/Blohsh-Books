@@ -1,7 +1,6 @@
 const { Router } = require('express')
 const router = Router()
 const fs = require('fs').promises
-const path = require('path')
 const cloudinary = require('cloudinary').v2
 
 const Book = require('../models/Book')
@@ -26,7 +25,10 @@ router.post('/', async (req, res) => {
             publicID
         })
         await newBook.save()
+        
         fs.unlink(req.file.path).then(() => console.log('Image Uploaded'))
+        .catch(console.log)
+
         res.json({message: 'Book Saved'})
     } 
     catch (error) {
