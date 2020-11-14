@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
             publicID
         })
         await newBook.save()
-        await fs.unlink(req.file.path)
+        fs.unlink(req.file.path).then(() => console.log('Image Uploaded'))
         res.json({message: 'Book Saved'})
     } 
     catch (error) {
